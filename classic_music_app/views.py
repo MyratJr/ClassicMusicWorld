@@ -4,7 +4,8 @@ from .models import *
 
 def home(request):
     context = {
-        'compositor' : Compositor.objects.all(),
+        'compositor' : Compositor.objects.all().order_by('-song_count'),
+        'bestcompositors' : Compositor.objects.all().order_by('-views')[:5]
     }
     if request.method == "POST":
         got = request.POST.get('song')
@@ -21,7 +22,7 @@ def single_channell(request, id, part):
     one_compositor.views = one_compositor.views+1
     one_compositor.save()
     context = {
-        'compositor' : Compositor.objects.all(),
+        'compositor' : Compositor.objects.all().order_by('-song_count'),
         'single' : one_compositor,
     }
     if request.method == "POST" and part == 'musics':
@@ -46,7 +47,7 @@ def listen_music(request, user_id, music_id):
     one_music.view = one_music.view + 1
     one_music.save()
     context = {
-        'compositor' : Compositor.objects.all(),
+        'compositor' : Compositor.objects.all().order_by('-song_count'),
         'single' : Compositor.objects.get(id=user_id),
         'music1' : one_music,
         "music2" : Music.objects.filter(Q(property=Compositor.objects.get(id=user_id)), ~Q(id=music_id))

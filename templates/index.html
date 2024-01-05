@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}{% if gozleg %}Search results{% else %}Main page{% endif %}{% endblock %}
 {% block content %}
 {% include 'navbar.html' %}
       <div id="wrapper">
@@ -108,7 +109,7 @@
                            <h6>Popular compositors</h6>
                         </div>
                      </div>
-                     {% for i in compositor %}
+                     {% for i in bestcompositors %}
                      {% if forloop.counter < 5 %}
                      <div class="col-xl-3 col-sm-6 mb-3">
                         <div class="channels-card">
