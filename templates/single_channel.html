@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+      <div id="wrapper">
+      {% include 'sidebar.html' %}
+         <div class="single-channel-page" id="content-wrapper">
+            <div class="single-channel-image">
+               <img class="img-fluid" alt="" src="{% static 'img/taze_single.jpg' %}" style="width:100%;height:50%">
+               <div class="channel-profile">
+                  <img class="channel-profile-img" alt="" src="{{single.avatar.url}}">
+                  <div class="social hidden-xs">
+                     <a class="fb" style="background-color:rgb(136, 121, 46)" href="{{single.wikimedia}}">Wikipedia</a>
+                     <a class="gp" style="background-color:rgb(136, 121, 46)" href="https://www.google.com/search?q={{single.fullname}}">Google</a>
+                  </div>
+               </div>
+            </div>
+            <div class="single-channel-nav">
+               <nav class="navbar navbar-expand-lg navbar-light">
+                  <a class="channel-brand">{{single.fullname}}</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav mr-auto">
+                        <li {% if not about %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                           <a class="nav-link" href="{% url 'single' single.id 'musics' %}">Musics 
+                           </a>
+                        </li>
+                        <li {% if not about %} class="nav-item" {% else %} class="nav-item active" {% endif %}>
+                           <a class="nav-link" href="{% url 'single' single.id 'about' %}">About
+                           </a>
+                        </li>
+                     </ul>
+                     {% if not about %}
+                        <form class="form-inline my-2 my-lg-0" action="{% url 'single' single.id 'musics' %}" method="POST">
+                        {% csrf_token %}
+                        <input name="wert" class="form-control form-control-sm mr-sm-1" style="background-color:rgb(136, 121, 46);border:rgb(136, 121, 46);color:black" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-outline-dark btn-sm my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button> &nbsp;&nbsp;&nbsp; 
+                     {% endif %}
+                        <button class="btn btn-outline-dark btn-sm" type="button">Views <strong>{{single.views}}</strong></button>
+                     </form>
+                  </div>
+               </nav>
+            </div>
+            <div class="container-fluid">
+               <div class="video-block section-padding">
+                  <div class="row">
+                     {% if not about %}
+                      <div class="col-md-12">
+                        <div class="main-title">
+                           <div class="btn-group float-right right-action">
+                              <a href="" class="right-action-link text-gray" style="color:gold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right" style="background-color:black">
+                                 <a class="dropdown-item" href="{% url 'single' single.id 'view' %}"><i class="fas fa-fw fa-star"></i> &nbsp; Most viewed</a>
+                                 <a class="dropdown-item" href="{% url 'single' single.id 'AtoZ' %}"><i class="fas fa-fw fa-signal"></i> &nbsp; A to Z</a>
+                                 <a class="dropdown-item" href="{% url 'single' single.id 'ZtoA' %}"><i class="fas fa-fw fa-signal"></i> &nbsp; Z to A</a>
+                              </div>
+                           </div>
+                           {% if not qaz %}
+                           <h6>{{single.fullname}}'s classic musics</h6>
+                           {% else %}
+                           <img style="display: block;  /* Ensure image is displayed as a block-level element */margin: 0 auto;" src="{% static 'img/404page.svg' %}" width="500">
+                           {% endif %}
+                        </div>
+                     </div>
+                     {% for i in musics %}
+                     <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="video-card">
+                           <div class="video-card-image">
+                              <a class="play-icon" href="{% url 'listen' single.id i.id %}"><i class="fa fa-music"></i></a>
+                              <a><img class="img-fluid" src="{{i.music_image.url}}" alt="" style="height:100%"></a>
+                              <div class="time">{{i.duration}}</div>
+                           </div>
+                           <div class="video-card-body">
+                              <div class="video-title">
+                                 <a href="{% url 'listen' single.id i.id %}">{{i.title}}</a>
+                              </div>
+                              <div class="video-title">
+                              <a><i class="fa fa-book"></i>&nbsp;&nbsp;{{i.property.fullname}}</a>
+                              </div>
+                              <div class="video-view">
+                                 {{i.view}} views &nbsp;<i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                     {% else %}
+                     <h6 style="padding-left:10vw;padding-right:20vw">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{single.about}}</h6>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

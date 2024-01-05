@@ -1,0 +1,19 @@
+{% load static %}
+<nav class="navbar navbar-expand navbar-light bg-black static-top osahan-nav sticky-top" style="background: linear-gradient(5deg, rgb(136, 121, 46) -80%, black 80%);">
+         &nbsp;&nbsp; 
+         <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
+         <i style="color:gold" class="fas fa-bars"></i>
+         </button> &nbsp;&nbsp;
+         <a class="navbar-brand mr-1" href="{% url 'index' %}"><img class="img-fluid" alt="" src="{% static 'img/112.png' %}"></a>
+         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search" action={% url "index" %} method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+               <input type="text" class="form-control" placeholder="Search for..." name="song">
+               <div class="input-group-append">
+                  <button class="btn btn-dark" type="button">
+                  <i class="fas fa-search"></i> 
+                  </button>
+               </div>
+            </div>
+         </form>
+      </nav>

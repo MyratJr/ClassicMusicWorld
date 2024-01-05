@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+      <div id="wrapper">
+      {% include 'sidebar.html' %}
+         <div id="content-wrapper">
+            <div class="container-fluid pb-0">
+            {% if salam %}
+               <div class="video-block section-padding">
+                  <div class="row">
+                  {% if gozleg%}
+                     <div class="col-md-12">
+                        <div class="main-title">
+                           <h6>Last uploaded classic musics</h6>
+                        </div>
+                     </div>
+                     {% else %}
+                     <img style="display: block;  /* Ensure image is displayed as a block-level element */
+  margin: 0 auto;" src="{% static 'img/404page.svg' %}" width="500">
+                     {% endif %}
+                     {% for i in gozleg %}
+                     <div class="col-xl-2 col-sm-6 mb-2">
+                        <div class="video-card">
+                           <div class="video-card-image">
+                              <a class="play-icon" href="{% url 'listen' i.property.id i.id %}"><i class="fa fa-music"></i></a>
+                              <a><img class="img-fluid" src="{{i.music_image.url}}" style="width:350px" alt=""></a>
+                              <div class="time">{{i.duration}}</div>
+                           </div>
+                           <div class="video-card-body">
+                              <div class="video-title1">
+                                 <a href="{% url 'listen' i.property.id i.id %}">{{i.title}}</a>
+                              </div>
+                              <div class="video-title1">
+                              <a><i class="fa fa-book"></i>&nbsp;&nbsp;{{i.property.fullname}}</a>
+                              </div>
+                              <div class="video-view">
+                                 {{i.view}} views &nbsp;<i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+               {% else %}
+               <div class="top-category section-padding mb-4">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="main-title">
+                           <h6>Compositors</h6>
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                        <div class="owl-carousel owl-carousel-category">
+                        {% for i in compositor %}
+                           <div class="item">
+                              <div class="category-item">
+                                 <a href="{% url 'single' i.id 'musics' %}">
+                                    <img class="img-fluid" src="{{i.avatar.url}}" alt="">
+                                    <h6 style="color:gold">{{i.fullname}}</h6>
+                                    <p style="color:gray">{{i.views}} views</p>
+                                 </a>
+                              </div>
+                           </div>
+                        {% endfor %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <hr>
+               <div class="video-block section-padding">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="main-title">
+                           <h6>Last uploaded classic musics</h6>
+                        </div>
+                     </div>
+                     {% for i in musics %}
+                     <div class="col-xl-2 col-sm-6 mb-2">
+                        <div class="video-card">
+                           <div class="video-card-image">
+                              <a class="play-icon" href="{% url 'listen' i.property.id i.id %}"><i class="fa fa-music"></i></a>
+                              <a><img class="img-fluid" src="{{i.music_image.url}}" style="width:350px" alt=""></a>
+                              <div class="time">{{i.duration}}</div>
+                           </div>
+                           <div class="video-card-body">
+                              <div class="video-title1">
+                                 <a href="{% url 'listen' i.property.id i.id %}">{{i.title}}</a>
+                              </div>
+                              <div class="video-title1">
+                              <a><i class="fa fa-book"></i>&nbsp;&nbsp;{{i.property.fullname}}</a>
+                              </div>
+                              <div class="video-view">
+                                 {{i.view}} views &nbsp;<i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+               <hr class="mt-0">
+               <div class="video-block section-padding">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="main-title">
+                           <h6>Popular compositors</h6>
+                        </div>
+                     </div>
+                     {% for i in compositor %}
+                     {% if forloop.counter < 5 %}
+                     <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="channels-card">
+                           <div class="channels-card-image">
+                              <a href="{% url 'single' i.id 'musics' %}"><img class="img-fluid" src="{{i.avatar.url}}" alt=""></a>
+                           </div>
+                           <div class="channels-card-body">
+                              <div class="channels-title">
+                                 <a href="#">{{i.fullname}}</a>
+                              </div>
+                              <div class="channels-view">
+                                 {{i.views}} views
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {% endif %}
+                     {% endfor %}
+                  </div>
+               </div>
+            {% endif %}
+            </div>
+         </div>
+      </div>
+{% endblock %}
