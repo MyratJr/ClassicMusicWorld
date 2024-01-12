@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    background-color: rgb(136, 121, 46);
+    background-color: black;
     color: #888;
     font-size: 13px;
     height: 100%;
@@ -199,7 +199,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     background: -webkit-linear-gradient(-45deg, black 0%, black 100%);
     /* Chrome10-25,Safari5.1-6 */
     
-    background: linear-gradient(5deg, rgb(136, 121, 46)50%, black 100%);
+    background: black;
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='black', endColorstr='gold', GradientType=1);
@@ -222,7 +222,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 .sidebar .nav-item .nav-link:hover,
 .sidebar .nav-item.active .nav-link {
-    background-color: rgb(136, 121, 46);
+    background-color: black;
 }
 .sidebar .nav-item .nav-link .fas {
     color: #ffffff;
@@ -453,7 +453,7 @@ input.form-control::placeholder {
     color: black;
 }
 .osahan-navbar-search .form-control {
-    background: rgb(136, 121, 46) none repeat scroll 0 0;
+    background: gold;
     border: medium none;
     font-size: 14px;
     max-width: 607px !important;
@@ -464,8 +464,8 @@ search {
     margin-right: 84px !important;
 }
 .osahan-navbar-search .btn {
-    background: rgb(136, 121, 27) none repeat scroll 0 0;
-    color: black;
+    background: black;
+    color: gold;
     border: medium none;
     font-size: 14px;
     padding: 0 18px;
@@ -879,7 +879,7 @@ h6 {
 
 /* Category Slider */
 .category-item img {
-    background: black none repeat scroll 0 0;
+    background: #171b20;
     border-radius: 50px;
     box-shadow: 0 0 2px black;
     height: 60px;
@@ -1002,7 +1002,7 @@ h6 {
     margin: 10px 0 0;
 }
 .video-card {
-    background: black none repeat scroll 0 0;
+    background: #171b20;
     border-radius: 2px;
     box-shadow: 0 0 11px black;
     transition-duration: 0.4s;
@@ -1041,7 +1041,7 @@ h6 {
 
 /* Channels Card */
 .channels-card {
-    background: black none repeat scroll 0 0;
+    background: #171b20;
     border-radius: 2px;
     box-shadow: 0 0 11px black;
     padding: 24px 12px;
@@ -1211,7 +1211,7 @@ h6 {
     padding: 0;
 }
 .single-channel-nav {
-    background: linear-gradient(5deg, rgb(136, 121, 46)0%, black 100%);
+    background: #171b20;
     box-shadow: 0 0 11px black;
     padding: 0rem 30px 0;
 }
@@ -1227,8 +1227,8 @@ h6 {
 }
 .single-channel-nav .nav-item.active .nav-link,
 .single-channel-nav .nav-item .nav-link:hover {
-    border-color: black;
-    color: black;
+    border-color: gold;
+    color: gold;
 }
 .single-channel-nav .navbar-nav {
     margin: 0 0 0 40px;
@@ -1265,7 +1265,6 @@ h6 {
     border-radius: 80px;
     height: 160px;
     width: 160px;
-    animation: spin 15s infinite linear;
 }
 .social {
     color: #fff;
@@ -1284,7 +1283,7 @@ h6 {
 /* Video Page */
 .box {
     padding: 15px;
-    background: black none repeat scroll 0 0;
+    background: #171b20;
     border-radius: 2px;
     box-shadow: 0 0 11px black;
     transition-duration: 0.4s;
@@ -1863,7 +1862,7 @@ h6 {
     transform: translate(-50.05%, -7%);
     max-width: 1000px;
     width: 100.1%;
-    background: black;
+    background: #171b20;
     padding: 20px 20px;
 }
 .image {
@@ -1977,7 +1976,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     padding: 20px;
     padding-left: 30px;
     border-radius: 5px;
-    background-color: black;
+    background-color: #171b20;
     color: #444;
     margin: 0px auto;
     overflow: hidden;
@@ -2272,11 +2271,11 @@ audio:nth-child(6) {
     /* Adjust scrollbar width */
 }
 .scrollable-container::-webkit-scrollbar-track {
-    background-color: rgb(136, 121, 46);
+    background-color: black;
     /* Track color */
 }
 .scrollable-container::-webkit-scrollbar-thumb {
-    background-color: black;
+    background-color: gold;
     /* Thumb color */
     
     border-radius: 10px;

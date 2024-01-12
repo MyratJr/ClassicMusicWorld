@@ -7,7 +7,6 @@ class Compositor(models.Model):
     avatar = models.ImageField(upload_to = "images", verbose_name = "avatar")
     about = models.TextField()
     wikimedia = models.URLField()
-    views = models.IntegerField(default=0)
     song_count = models.IntegerField(default=0)
     registered_time = models.DateField(auto_now=True)
 
@@ -22,10 +21,9 @@ class Compositor(models.Model):
 class Music(models.Model):
     property = models.ForeignKey(Compositor, on_delete = models.CASCADE, blank = True)
     title = models.CharField(max_length = 100, blank = True)
-    music = models.FileField(upload_to = "musics",verbose_name = "Wideo")
-    music_image = models.ImageField(upload_to = "video_images", verbose_name = "Image of video", blank=True)
+    music = models.FileField(upload_to = "musics",verbose_name = "Saz")
+    music_image = models.ImageField(upload_to = "video_images", verbose_name = "Image of music", blank=True)
     melody = models.FileField(upload_to = "melody_images",null=True)
-    view = models.IntegerField(default = 0)
     duration = models.DurationField(default = datetime.timedelta(seconds = 0))
     uploaded_time = models.DateField(auto_now=True)
 
@@ -36,4 +34,4 @@ class Music(models.Model):
         super().save(*args, **kwargs)
         compositor = self.property
         compositor.song_count = Music.objects.filter(property=compositor).count()
-        compositor.save() 
+        compositor.save()

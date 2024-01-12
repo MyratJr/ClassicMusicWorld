@@ -13,7 +13,7 @@
                   {% if gozleg%}
                      <div class="col-md-12">
                         <div class="main-title">
-                           <h6>Search results</h6>
+                           <h6 style="color:gold">Search results</h6>
                         </div>
                      </div>
                      {% else %}
@@ -36,7 +36,7 @@
                               <a><i class="fa fa-book"></i>&nbsp;&nbsp;{{i.property.fullname}}</a>
                               </div>
                               <div class="video-view">
-                                 {{i.view}} views &nbsp;<i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
+                                 <i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
                               </div>
                            </div>
                         </div>
@@ -49,18 +49,17 @@
                   <div class="row">
                      <div class="col-md-12">
                         <div class="main-title">
-                           <h6>Compositors</h6>
+                           <h6 style="color:gold">Compositors</h6>
                         </div>
                      </div>
                      <div class="col-md-12">
                         <div class="owl-carousel owl-carousel-category">
                         {% for i in compositor %}
                            <div class="item">
-                              <div class="category-item">
+                              <div class="category-item" style="background-color:#171b20">
                                  <a href="{% url 'single' i.id 'musics' %}">
                                     <img class="img-fluid" src="{{i.avatar.url}}" alt="">
                                     <h6 style="color:gold">{{i.fullname}}</h6>
-                                    <p style="color:gray">{{i.views}} views</p>
                                  </a>
                               </div>
                            </div>
@@ -74,7 +73,7 @@
                   <div class="row">
                      <div class="col-md-12">
                         <div class="main-title">
-                           <h6>Last uploaded classic musics</h6>
+                           <h6 style="color:gold">Last uploaded classic musics</h6>
                         </div>
                      </div>
                      {% for i in musics %}
@@ -92,41 +91,11 @@
                               <div class="video-title1">
                               <a><i class="fa fa-book"></i>&nbsp;&nbsp;{{i.property.fullname}}</a>
                               </div>
-                              <div class="video-view">
-                                 {{i.view}} views &nbsp;<i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
+                              <div class="video-view"><i class="fas fa-calendar-alt"></i> {{i.uploaded_time}}
                               </div>
                            </div>
                         </div>
                      </div>
-                     {% endfor %}
-                  </div>
-               </div>
-               <hr class="mt-0">
-               <div class="video-block section-padding">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="main-title">
-                           <h6>Popular compositors</h6>
-                        </div>
-                     </div>
-                     {% for i in bestcompositors %}
-                     {% if forloop.counter < 5 %}
-                     <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="channels-card">
-                           <div class="channels-card-image">
-                              <a href="{% url 'single' i.id 'musics' %}"><img class="img-fluid" src="{{i.avatar.url}}" alt=""></a>
-                           </div>
-                           <div class="channels-card-body">
-                              <div class="channels-title">
-                                 <a href="#">{{i.fullname}}</a>
-                              </div>
-                              <div class="channels-view">
-                                 {{i.views}} views
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     {% endif %}
                      {% endfor %}
                   </div>
                </div>

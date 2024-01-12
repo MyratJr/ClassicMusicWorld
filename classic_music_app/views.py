@@ -5,11 +5,10 @@ from .models import *
 def home(request):
     context = {
         'compositor' : Compositor.objects.all().order_by('-song_count'),
-        'bestcompositors' : Compositor.objects.all().order_by('-views')[:5]
     }
     if request.method == "POST":
         got = request.POST.get('song')
-        gozleg = Music.objects.filter(title__icontains=got).select_related("property")
+        gozleg = Music.objects.filter(Q(title__icontains=got) | Q(property__fullname__icontains=got)).select_related("property")
         context['gozleg'] = gozleg
         context['salam'] = "salam"
     else:
@@ -19,8 +18,6 @@ def home(request):
 
 def single_channell(request, id, part):
     one_compositor = Compositor.objects.get(id=id)
-    one_compositor.views = one_compositor.views+1
-    one_compositor.save()
     context = {
         'compositor' : Compositor.objects.all().order_by('-song_count'),
         'single' : one_compositor,
@@ -28,13 +25,10 @@ def single_channell(request, id, part):
     if request.method == "POST" and part == 'musics':
         got = request.POST.get('wert')
         context['musics'] = Music.objects.filter(property=Compositor.objects.get(id=id), title__icontains=got).select_related("property")
-        context['qaz'] = 'qaz'
     elif part == 'musics':
         context['musics'] = Music.objects.filter(property=Compositor.objects.get(id=id)).select_related("property")
     elif part == 'about':
         context['about'] = 'about'
-    elif part == 'view':
-        context['musics'] = Music.objects.filter(property=Compositor.objects.get(id=id)).order_by('-view').select_related("property")
     elif part == 'AtoZ':
         context['musics'] = Music.objects.filter(property=Compositor.objects.get(id=id)).order_by('title').select_related("property")
     elif part == 'ZtoA':
@@ -44,8 +38,6 @@ def single_channell(request, id, part):
 
 def listen_music(request, user_id, music_id):
     one_music = Music.objects.get(property=Compositor.objects.get(id=user_id), id=music_id)
-    one_music.view = one_music.view + 1
-    one_music.save()
     context = {
         'compositor' : Compositor.objects.all().order_by('-song_count'),
         'single' : Compositor.objects.get(id=user_id),
