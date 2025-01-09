@@ -2,16 +2,16 @@
 <ul class="sidebar scrollable-container navbar-nav">
 <li class="nav-item active">
     <a class="nav-link" href="{% url 'index' %}">
-    <i class="fas fa-fw fa-home" style="color:gold"></i>
-    <span  style="color:gold">Home</span>
+    <i class="fas fa-fw fa-home" style=""></i>
+    <span  style="color:white">Home</span>
     </a>
 </li>
 <li class="nav-item channel-sidebar-list">
-    <h6  style="color:gold">Compositor list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;song</h6>
+    <h6  style="color:white">Compositor list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;song</h6>
     {% for i in compositor %}
     <ul>
         <li>
-            <a href="{% url 'single' i.id 'musics' %}" style="color:gold">
+            <a href="{% url 'single' i.id 'musics' %}" style="color:white">
             <div class="truncated-text"><img class="img-fluid"  alt="" src="{{i.avatar.url}}"><span class="sd">{{i.fullname}}</span></div> <span class="badge badge-warning" style="margin-top:-22px">{{i.song_count}}</span>
             </a>
         </li>

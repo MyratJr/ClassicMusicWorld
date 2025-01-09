@@ -109,11 +109,11 @@
       </div>
                            </div>
                            <div class="single-video-title box mb-3">
-                              <h2><a style="color:gold">{{music1.title}}</a></h2>
+                              <h2><a style="color:white">{{music1.title}}</a></h2>
                            </div>
                            <div class="single-video-author box mb-3">
                               <a href="{% url 'single' single.id 'musics' %}"><img class="img-fluid" src="{{single.avatar.url}}" alt=""></a>
-                              <p><a href="{% url 'single' single.id 'musics' %}"><strong style="color:gold">{{single.fullname}}</strong></a><span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"></span></p>
+                              <p><a href="{% url 'single' single.id 'musics' %}"><strong style="">{{single.fullname}}</strong></a><span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"></span></p>
                               <small>Published on {{single.registered_time}}</small>
                            </div>
                         </div>
@@ -129,6 +129,5 @@
                </div>
             </div>
          </div>
-         <!-- /.content-wrapper -->
       </div>
 {% endblock %}
